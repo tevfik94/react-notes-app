@@ -37,6 +37,9 @@ function NewNotePage() {
         // handle error if needed
       });
   }
+  const handleCancel = () => {
+    navigate("/notes");
+  };
 
   return (
     <div>
@@ -58,6 +61,7 @@ function NewNotePage() {
         </label>
         <br />
         <button type="submit">Submit</button>
+        <button onClick={handleCancel}>Cancel</button>
       </form>
     </div>
   );
