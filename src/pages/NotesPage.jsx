@@ -58,6 +58,9 @@ function NotesPage() {
       console.error(error);
     }
   };
+  const handleEdit = (id) => {
+    navigate(`/notes/edit/${id}`);
+  };
 
   return (
     <div>
@@ -73,6 +76,7 @@ function NotesPage() {
           <p>{note.body}</p>
 
           <button onClick={() => handleDelete(note.id)}>Delete</button>
+          <button onClick={() => handleEdit(note.id)}>Edit</button>
         </div>
       ))}
     </div>
