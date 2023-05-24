@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../styles/loginPage.scss";
 
 function LoginPage() {
   const [inputs, setInputs] = useState({
@@ -44,29 +45,36 @@ function LoginPage() {
   }
 
   return (
-    <>
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          name="username"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={handleChange}
-        />
-        <button type="submit">Login</button>
-      </form>
-      <br></br>
-      <span>Do you have an account?</span>
-      <Link to="/register">
-        <button>register</button>
-      </Link>
-    </>
+    <div className="login">
+      <div className="card">
+        <div className="left">
+          <h1>Notes App</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <span>Don't you have an account?</span>
+          <Link to="/register">
+            <button>register</button>
+          </Link>
+        </div>
+        <div className="right">
+          <h1>Login</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Username"
+              name="username"
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleChange}
+            />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }
 
