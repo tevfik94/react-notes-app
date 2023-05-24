@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import "../styles/registerPage.scss";
 function RegisterPage() {
   const [inputs, setInputs] = useState({
     username: "",
@@ -50,31 +50,38 @@ function RegisterPage() {
   }
 
   return (
-    <>
-      <h1>Register Page</h1>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          name="username"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={handleChange}
-        />
+    <div className="register">
+      <div className="card">
+        <div className="right">
+          <h1>Notes App</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <span>Do you have an account?</span>
+          <Link to="/">
+            <button>Login</button>
+          </Link>
+        </div>
+        <div className="left">
+          <h1>Register</h1>
+          {error && <p>{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Username"
+              name="username"
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleChange}
+            />
 
-        <button type="submit">Register</button>
-      </form>
-      <br></br>
-      <span>Do you have an account?</span>
-      <Link to="/">
-        <button>Login</button>
-      </Link>
-    </>
+            <button type="submit">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }
 
