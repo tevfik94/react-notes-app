@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/newNotePage.scss";
 
 function NewNotePage() {
   const navigate = useNavigate();
@@ -10,6 +11,12 @@ function NewNotePage() {
 
   function handleChange(event) {
     const { name, value } = event.target;
+    if (name === "body" && value.length > 400) {
+      return;
+    }
+    if (name === "title" && value.length > 100) {
+      return;
+    }
     setNote((prevNote) => ({
       ...prevNote,
       [name]: value,
@@ -40,29 +47,41 @@ function NewNotePage() {
   const handleCancel = () => {
     navigate("/notes");
   };
+  const characterCount = note.body.length;
+  const titleCount = note.title.length;
 
   return (
-    <div>
-      <h1>New Note</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input
-            type="text"
-            name="title"
-            value={note.title}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Body:
-          <textarea name="body" value={note.body} onChange={handleChange} />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-        <button onClick={handleCancel}>Cancel</button>
-      </form>
+    <div className="new-note">
+      <div className="note-card">
+        <h1>New Note</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="note-title">
+            <input
+              type="text"
+              name="title"
+              value={note.title}
+              onChange={handleChange}
+              placeholder="Title"
+              maxLength={100}
+            />
+            <small className="character-count">{titleCount}/100 </small>
+          </div>
+          <div className="note-body">
+            <textarea
+              name="body"
+              value={note.body}
+              onChange={handleChange}
+              placeholder="Your Note"
+              maxLength={400}
+            />
+            <small className="character-count">{characterCount}/400 </small>
+          </div>
+          <div className="buttons">
+            <button type="submit">Submit</button>
+            <button onClick={handleCancel}>Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
