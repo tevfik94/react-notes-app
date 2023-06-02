@@ -1,0 +1,101 @@
+.edit-note {
+  height: 100vh;
+  background-color: rgb(193, 190, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .note-card {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 75%;
+    h1 {
+      font-size: 45px;
+      line-height: 45px;
+      color: #555;
+      padding: 30px;
+    }
+    .form {
+      .form2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        width: 100%;
+        .note-title {
+          position: relative;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          width: 75%;
+
+          textarea {
+            border: none;
+            border-bottom: 2px solid lightgray;
+            border-left: 2px solid lightgray;
+            padding: 20px 10px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            outline-color: rebeccapurple;
+            resize: none;
+          }
+          .character-count {
+            position: absolute;
+            bottom: 5px;
+            right: 1px;
+            font-size: 12px;
+            color: gray;
+          }
+        }
+
+        .note-body {
+          position: relative;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          width: 75%;
+          textarea {
+            border: none;
+            border-bottom: 2px solid lightgray;
+            border-left: 2px solid lightgray;
+            padding: 20px 10px;
+            resize: none;
+            height: 125px;
+            width: 100%;
+            font-size: 16px;
+            outline-color: rebeccapurple;
+          }
+
+          .character-count {
+            position: absolute;
+            bottom: 5px;
+            right: 1px;
+            font-size: 12px;
+            color: gray;
+          }
+        }
+      }
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+        button {
+          width: 20%;
+          padding: 10px;
+          border: none;
+          background-color: #938eef;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
