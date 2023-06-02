@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../styles/notespage.scss";
 
 function NotesPage() {
   const [notes, setNotes] = useState([]);
@@ -63,13 +64,17 @@ function NotesPage() {
   };
 
   return (
-    <div>
-      <h1>Notes Page</h1>
-      <Link to="/notes/add">
-        <button>Create New Note</button>
-      </Link>
-      <br />
-      <button onClick={handleLogout}>Logout</button>
+    <div className="notes-page">
+      <div className="header">
+        <h1>Notes Page</h1>
+        <div className="nav">
+          <Link to="/notes/add">
+            <button>Create New Note</button>
+          </Link>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      </div>
+
       {notes.map((note) => (
         <div key={note.id}>
           <h3>{note.title}</h3>
