@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import "../styles/editNotePage.scss";
 function EditNotePage() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -54,25 +54,40 @@ function EditNotePage() {
   if (!note) {
     return <div>Loading...</div>;
   }
+  const titleCount = updatedNote.title.length;
+  const characterCount = updatedNote.body.length;
 
   return (
-    <div>
-      {note.map((note) => (
-        <div key={note.id}>
-          <textarea
-            name="title"
-            value={updatedNote.title || note.title}
-            onChange={handleNoteChange}
-          />
-          <textarea
-            name="body"
-            value={updatedNote.body || note.body}
-            onChange={handleNoteChange}
-          />
+    <div className="edit-note">
+      <div className="note-card">
+        <h1>Edit Note</h1>
+        <div className="form">
+          {note.map((note) => (
+            <div className="form2" key={note.id}>
+              <div className="note-title">
+                <textarea
+                  name="title"
+                  value={updatedNote.title || note.title}
+                  onChange={handleNoteChange}
+                />
+                <small className="character-count">{titleCount}/100 </small>
+              </div>
+              <div className="note-body">
+                <textarea
+                  name="body"
+                  value={updatedNote.body || note.body}
+                  onChange={handleNoteChange}
+                />
+                <small className="character-count">{characterCount}/400 </small>
+              </div>
+            </div>
+          ))}
+          <div className="buttons">
+            <button onClick={updateNote}>Update Note</button>
+            <button onClick={handleCancel}>Cancel</button>
+          </div>
         </div>
-      ))}
-      <button onClick={updateNote}>Update Note</button>
-      <button onClick={handleCancel}>Cancel</button>
+      </div>
     </div>
   );
 }
